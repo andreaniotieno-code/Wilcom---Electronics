@@ -3,83 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wilcom Electronics | Katito</title>
+    <title>Wilcom Electronics | Katito Store</title>
     <style>
         :root {
             --primary: #0f172a;
             --accent: #25d366;
-            --bg: #f8fafc;
-            --text: #334155;
+            --secondary: #2563eb;
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --muted: #64748b;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-        body { background: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 80px; }
-        header { background: var(--primary); color: white; padding: 1.5rem 1rem; text-align: center; }
-        header h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
-        header p { font-size: 0.9rem; color: #94a3b8; }
-        .container { max-width: 600px; margin: 0 auto; padding: 1rem; }
-        .banner { background: #e2e8f0; padding: 0.75rem; border-radius: 8px; text-align: center; font-size: 0.85rem; margin-bottom: 1rem; font-weight: 500; }
-        .products { display: grid; gap: 1rem; }
-        .card { background: white; border-radius: 12px; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
-        .info h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 0.25rem; }
-        .info .price { font-weight: bold; color: #059669; font-size: 1rem; margin-bottom: 0.25rem; }
-        .info .desc { font-size: 0.85rem; color: #64748b; }
-        .order-btn { background: var(--accent); color: white; border: none; padding: 0.6rem 1rem; border-radius: 8px; font-weight: bold; font-size: 0.9rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
-        footer { text-align: center; margin-top: 2rem; font-size: 0.8rem; color: #94a3b8; }
+        body { background: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 60px; }
+        
+        header { background: var(--primary); color: white; padding: 1.5rem 1rem; text-align: center; sticky: top; }
+        header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.2rem; }
+        header p { font-size: 0.85rem; color: #94a3b8; }
+
+        .contact-bar { background: #e2e8f0; padding: 0.75rem 1rem; text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+        .contact-bar a { color: #0284c7; text-decoration: none; }
+
+        .container { max-width: 768px; margin: 0 auto; padding: 1rem; }
+
+        /* Search & Filter */
+        .controls { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem; }
+        .search-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; outline: none; }
+        .categories { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.25rem; scrollbar-width: none; }
+        .cat-btn { background: #e2e8f0; border: none; padding: 0.5rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; color: var(--text); cursor: pointer; }
+        .cat-btn.active { background: var(--secondary); color: white; }
+
+        /* Products Grid */
+        .products { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        @media (min-width: 540px) {
+            .products { grid-template-columns: 1fr 1fr; }
+        }
+
+        .card { background: var(--card-bg); border-radius: 12px; padding: 1rem; border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .badge { position: absolute; top: 0.75rem; right: 0.75rem; background: #dcfce7; color: #166534; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; }
+        
+        .info h3 { font-size: 1.05rem; color: var(--primary); margin-bottom: 0.25rem; padding-right: 3rem; }
+        .info .category-tag { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem; display: block; }
+        .info .price { font-weight: 700; color: #059669; font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .info .desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+
+        .order-btn { background: var(--accent); color: white; border: none; padding: 0.65rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; cursor: pointer; text-decoration: none; text-align: center; display: block; }
+
+        footer { text-align: center; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #cbd5e1; font-size: 0.8rem; color: var(--muted); }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Wilcom Electronics</h1>
-        <p>Katito, Kolweny, Bolo & Nyakwere</p>
+        <p>Serving Katito, Kolweny, Bolo & Nyakwere</p>
     </header>
 
+    <div class="contact-bar">
+        📞 Call / WhatsApp: <a href="tel:0720547236">0720547236</a> (Amos Okeyo)
+    </div>
+
     <div class="container">
-        <div class="banner">📱 Call / WhatsApp: 0720547236 (Amos Okeyo)</div>
-
-        <div class="products">
-            <div class="card">
-                <div class="info">
-                    <h3>Smart LED TV (32 inch)</h3>
-                    <div class="price">KSh 16,500</div>
-                    <div class="desc">Crystal clear HD display with built-in Wi-Fi.</div>
-                </div>
-                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Smart%20LED%20TV%20(32%20inch)%20for%20KSh%2016,500." class="order-btn">Order</a>
-            </div>
-
-            <div class="card">
-                <div class="info">
-                    <h3>Subwoofer Speaker System</h3>
-                    <div class="price">KSh 6,500</div>
-                    <div class="desc">Heavy bass, Bluetooth, USB & FM radio support.</div>
-                </div>
-                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Subwoofer%20Speaker%20System%20for%20KSh%206,500." class="order-btn">Order</a>
-            </div>
-
-            <div class="card">
-                <div class="info">
-                    <h3>Digital Satellite Decoder</h3>
-                    <div class="price">KSh 3,200</div>
-                    <div class="desc">Free-to-air channels with high definition output.</div>
-                </div>
-                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Digital%20Satellite%20Decoder%20for%20KSh%203,200." class="order-btn">Order</a>
-            </div>
-
-            <div class="card">
-                <div class="info">
-                    <h3>Extension Cord (10M)</h3>
-                    <div class="price">KSh 850</div>
-                    <div class="desc">Heavy-duty copper wire with safety shutters.</div>
-                </div>
-                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Extension%20Cord%20(10M)%20for%20KSh%20850." class="order-btn">Order</a>
+        <!-- Search and Filter Bar -->
+        <div class="controls">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search electronics..." onkeyup="filterProducts()">
+            <div class="categories">
+                <button class="cat-btn active" onclick="filterCategory('all', this)">All</button>
+                <button class="cat-btn" onclick="filterCategory('tv', this)">TV & Video</button>
+                <button class="cat-btn" onclick="filterCategory('audio', this)">Audio</button>
+                <button class="cat-btn" onclick="filterCategory('power', this)">Power & Solar</button>
+                <button class="cat-btn" onclick="filterCategory('accessories', this)">Accessories</button>
             </div>
         </div>
 
+        <!-- Product Listing -->
+        <div class="products" id="productGrid">
+            
+            <div class="card" data-category="tv" data-name="smart led tv 32 inch">
+                <span class="badge">In Stock</span>
+                <div class="info">
+                    <span class="category-tag">TV & Video</span>
+                    <h3>Smart LED TV (32")</h3>
+                    <div class="price">KSh 16,500</div>
+                    <div class="desc">Crystal clear HD display, built-in Wi-Fi, YouTube & Netflix app support.</div>
+                </div>
+                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Smart%20LED%20TV%20(32%20inch)%20for%20KSh%2016,500." class="order-btn">Order via WhatsApp</a>
+            </div>
+
+            <div class="card" data-category="tv" data-name="frameless digital tv 43 inch">
+                <span class="badge">Popular</span>
+                <div class="info">
+                    <span class="category-tag">TV & Video</span>
+                    <h3>Frameless Digital TV (43")</h3>
+                    <div class="price">KSh 24,000</div>
+                    <div class="desc">Full HD display with built-in free-to-air digital decoder.</div>
+                </div>
+                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Frameless%20Digital%20TV%20(43%20inch)%20for%20KSh%2024,000." class="order-btn">Order via WhatsApp</a>
+            </div>
+
+            <div class="card" data-category="audio" data-name="subwoofer speaker system">
+                <span class="badge">In Stock</span>
+                <div class="info">
+                    <span class="category-tag">Audio</span>
+                    <h3>Subwoofer Speaker System</h3>
+                    <div class="price">KSh 6,500</div>
+                    <div class="desc">Heavy bass output, Bluetooth 5.0, USB flash support, and FM Radio.</div>
+                </div>
+                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Subwoofer%20Speaker%20System%20for%20KSh%206,500." class="order-btn">Order via WhatsApp</a>
+            </div>
+
+            <div class="card" data-category="audio" data-name="portable bluetooth speaker">
+                <span class="badge">Best Seller</span>
+                <div class="info">
+                    <span class="category-tag">Audio</span>
+                    <h3>Portable Bluetooth Speaker</h3>
+                    <div class="price">KSh 2,200</div>
+                    <div class="desc">Rechargeable battery, strong bass, waterproof outdoor design.</div>
+                </div>
+                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Portable%20Bluetooth%20Speaker%20for%20KSh%202,200." class="order-btn">Order via WhatsApp</a>
+            </div>
+
+            <div class="card" data-category="tv" data-name="digital satellite decoder">
+                <span class="badge">In Stock</span>
+                <div class="info">
+                    <span class="category-tag">TV & Video</span>
+                    <h3>Digital Satellite Decoder</h3>
+                    <div class="price">KSh 3,200</div>
+                    <div class="desc">Free-to-air channels, HDMI output, USB recording capability.</div>
+                </div>
+                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Digital%20Satellite%20Decoder%20for%20KSh%203,200." class="order-btn">Order via WhatsApp</a>
+            </div>
+
+            <div class="card" data-category="power" data-name="solar power inverter system">
+                <span class="badge">New</span>
+                <div class="info">
+                    <span class="category-tag">Power & Solar</span>
+                    <h3>Solar Inverter Unit</h3>
+                    <div class="price">KSh 8,500</div>
+                    <div class="desc">Reliable back-up power unit for home lighting, charging, and TV.</div>
+                </div>
+                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Solar%20Inverter%20Unit%20for%20KSh%208,500." class="order-btn">Order via WhatsApp</a>
+            </div>
+
+            <div class="card" data-category="power" data-name="heavy duty extension cord 10m">
+                <span class="badge">In Stock</span>
+                <div class="info">
+                    <span class="category-tag">Accessories</span>
+                    <h3>Extension Cord (10M)</h3>
+                    <div class="price">KSh 850</div>
+                    <div class="desc">Heavy-duty copper wiring with built-in surge protection sockets.</div>
+                </div>
+                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20Extension%20Cord%20(10M)%20for%20KSh%20850." class="order-btn">Order via WhatsApp</a>
+            </div>
+
+            <div class="card" data-category="accessories" data-name="adjustable tv wall mount bracket">
+                <span class="badge">In Stock</span>
+                <div class="info">
+                    <span class="category-tag">Accessories</span>
+                    <h3>TV Wall Mount Bracket</h3>
+                    <div class="price">KSh 1,400</div>
+                    <div class="desc">Fits 26" to 55" screens, heavy-gauge steel construction.</div>
+                </div>
+                <a href="https://wa.me/254720547236?text=Hello%20Wilcom%20Electronics,%20I%20want%20to%20order%20the%20TV%20Wall%20Mount%20Bracket%20for%20KSh%201,400." class="order-btn">Order via WhatsApp</a>
+            </div>
+
+        </div>
+
         <footer>
-            &copy; 2026 Wilcom Electronics. Managed by Amos Okeyo.
+            &copy; 2026 Wilcom Electronics. All rights reserved.<br>
+            Managed by Amos Okeyo (0720547236)
         </footer>
     </div>
 
+    <script>
+        let currentCategory = 'all';
+
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                const cat = card.getAttribute('data-category');
+
+                const matchesSearch = name.includes(query);
+                const matchesCat = (currentCategory === 'all' || cat === currentCategory);
+
+                if (matchesSearch && matchesCat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterProducts();
+        }
+    </script>
 </body>
-                                                                        </html>
-  
+    </html>
+    
